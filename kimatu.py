@@ -45,25 +45,6 @@ elif Choice == "チャットボット":
         st.write("あなた：{}".format(text))
         resul_t = Bot(text)
         st.write("BOTちゃん:{}".format(resul_t))
-elif Choice == "顔認識":
-    st.title("顔認識")
-    sub_key = '0ed7573f5e0d42f7956036426d9fc87b'
-    assert sub_key
-    Face_APi = 'https://21220098.cognitiveservices.azure.com/face/v1.0/detect'
-
-    Up_file = st.file_uploader("imgファイルアップロード",type="jpg")
-    if Up_file is not None:
-        img = Image.open(Up_file)
-        with io.BytesIO() as output:
-            img.save(output,format="JPEG")
-            biny_img = output.getvalue()
-        headers = {
-            'Content-Type':'application/octet-stream',
-            'Ocp-Apim-Subscription-key': sub_key}
-
-        params = {
-            'returnFaceId':'true',
-            'returnFaceAttributes': 'age,gender,headPose,smile,facialHair,glasses,emotion,hair,makeup,occlusion,accessories,blur,exposure,noise',}
 
         res = requests.post(Face_APi,params=params,headers=headers,data=biny_img)
         results = res.json()
