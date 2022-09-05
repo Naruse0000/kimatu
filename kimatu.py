@@ -33,7 +33,7 @@ def Bot(txt):
         print(response.json())
         return "ごめんなさい。もう一度教えて下さい。"
 
-Choice = st.sidebar.selectbox('選んでね',('音声', 'チャットボット', '顔認識'))
+Choice = st.sidebar.selectbox('選んでね',('音声', 'チャットボット'))
 if Choice == "音声":
     st.title("音声データをテキストに変換")
     Up_file = st.file_uploader("wavファイルアップロード", type='wav')
